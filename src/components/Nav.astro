@@ -147,10 +147,12 @@ const headers = ["Projects", "Skills", "About", "Contact"];
         navMenu.inert = true;
         nonNav.forEach((el) => (el.inert = false));
         body.style.overflowY = "";
+        body.style.touchAction = "";
       } else if (navMenuToggle.ariaExpanded === "true") {
         navMenu.inert = false;
         nonNav.forEach((el) => (el.inert = true));
         body.style.overflowY = "hidden";
+        body.style.touchAction = "none";
       }
     } else {
       // desktop - menu no longer expands, nothing should be inert
@@ -158,6 +160,7 @@ const headers = ["Projects", "Skills", "About", "Contact"];
       navMenu.inert = false;
       nonNav.forEach((el) => (el.inert = false));
       body.style.overflowY = "";
+      body.style.touchAction = "";
     }
   }
   handleResize();
@@ -170,11 +173,13 @@ const headers = ["Projects", "Skills", "About", "Contact"];
       navMenu.inert = true;
       nonNav.forEach((el) => (el.inert = false));
       body.style.overflowY = "";
+      body.style.touchAction = "";
     } else {
       navMenuToggle.ariaExpanded = "true";
       navMenu.inert = false;
       nonNav.forEach((el) => (el.inert = true));
       body.style.overflowY = "hidden";
+      body.style.touchAction = "none";
     }
   }
   navMenuToggle?.addEventListener("click", toggleNavMenu);
