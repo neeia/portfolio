@@ -1,0 +1,122 @@
+---
+import { Icon } from "astro-icon";
+
+export interface Props {
+  name: string;
+  src: string;
+  description: string[];
+  url?: string;
+  repo?: string;
+  stack: Tech[];
+  accent: string;
+}
+interface Tech {
+  title: string;
+  src: string;
+}
+
+const { name, src, description, url, repo, stack, accent } = Astro.props;
+---
+
+<li class="contents">
+  <section
+    class="flex flex-col md:flex-row w-full gap-4 md:gap-12 mt-16 md:mt-32 md:mx-auto text-justify"
+  >
+    <img
+      src=`/img/projects/${src}`
+      width="320"
+      height="320"
+      class="w-60 mx-auto md:w-80"
+      alt=""
+    />
+    <div class="flex flex-col justify-center">
+      <div class="flex">
+        <div>
+          <span class="subtitle">FEATURED</span>
+          <h3 class="text-2xl md:text-3xl font-bold">{name}</h3>
+        </div>
+
+        <ul class="stack flex ml-auto mt-auto gap-4 mr-4 mb-1">
+          {
+            stack.map((t) => (
+              <li>
+                <Icon class="w-6 h-6" name={t.src} title={t.title} />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      {description.map((d) => <p class="mt-3">{d}</p>)}
+      <div class="flex gap-4 mt-8 mx-2">
+        {
+          url && (
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="action py-3 px-8 hover:brightness-110 hover:translate-y-[-1px] transition-transform"
+            >
+              VISIT SITE
+            </a>
+          )
+        }
+        {
+          repo && (
+            <a
+              href={repo}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="py-3 px-8 hover:brightness-110 hover:translate-y-[-1px] transition-transform"
+            >
+              VISIT REPO
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</li>
+<style define:vars={{ accent }}>
+  .subtitle::before {
+    content: "";
+    display: inline-block;
+    margin-left: 0.25em;
+    margin-right: 0.5em;
+    padding-right: 0.15em;
+    transform: skew(-18deg) translateY(0.05em);
+    border-left: 0.2em solid var(--accent);
+    border-right: 0.2em solid var(--accent);
+    height: 0.9em;
+  }
+
+  .stack {
+    position: relative;
+  }
+  .stack::before,
+  .stack::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-right: 0.35em;
+    border: 0.2em solid var(--accent);
+    height: 2em;
+  }
+  .stack:before {
+    left: -12px;
+    border-right: none;
+  }
+  .stack:after {
+    right: -12px;
+    border-left: none;
+  }
+
+  .action {
+    background-color: var(--accent) !important;
+    color: #121212;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+</style>

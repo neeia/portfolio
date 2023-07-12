@@ -1,81 +1,404 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Featured from "../components/projects/Featured.astro";
+import Autosize from "../components/Autosize.astro";
+import { Icon } from "astro-icon";
+import Project from "../components/projects/Project.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
-	</main>
-</Layout>
+<Layout title="Neia">
+  <main class="max-w-screen-xl m-auto">
+    <section
+      id="home"
+      class="flex flex-col md:flex-row w-full gap-12 max-w-screen-md mx-auto mt-12 min-h-[calc(100dvh-48px)] p-6"
+    >
+      <img
+        id="profile"
+        src="profile.svg"
+        width="320"
+        height="320"
+        class="w-60 mx-auto md:w-80 h-min my-auto bg-amber-100 dark:bg-inherit relative"
+      />
+      <div class="flex flex-col gap-6 md:my-auto">
+        <h1 class="text-4xl md:text-6xl font-bold">Hi, I'm Neia.</h1>
+        <p class="text-xl md:text-2xl">
+          I'm a web developer. I make interesting and sometimes useful things.
+          Want to know more?
+        </p>
+      </div>
+    </section>
+    <section id="projects" class="page-section">
+      <h2 class="section-header">Projects</h2>
+      <ul class="contents">
+        <Featured
+          name="Krooster"
+          src="krooster.png"
+          description={[
+            "Collection and progress tracker for Arknights, a game by Hypergryph.",
+            "I'm the lead developer of Krooster. Krooster was my first project, which has now grown to over 10,000 users. Recently, as a development team began to form, I gradually settled into my role as a designer and project manager.",
+            "Currently, we're working on a massive overhaul for Krooster's tech stack, migrating from Firebase with Supabase, integrating computer vision to automate roster tracking, and developing a public API.",
+          ]}
+          stack={[
+            {
+              title: "Next.js",
+              src: "simple-icons:nextdotjs",
+            },
+            {
+              title: "Material UI",
+              src: "simple-icons:mui",
+            },
+            {
+              title: "Firebase",
+              src: "simple-icons:firebase",
+            },
+          ]}
+          url="https://www.krooster.com"
+          repo="https://github.com/neeia/ak-roster"
+          accent="#ffd440"
+        />
+        <Featured
+          name="KQM: Star Rail"
+          src="kqmhsr.png"
+          description={[
+            "Honkai: Star Rail community dedicated to providing in-depth game guides and information.",
+            "I'm working with a small team to redesign the KQM Honkai: Star Rail website. Our primary goals are to improve a11y, streamline work for our content team, and to reinforce our branding.",
+            "I'm currently filling the role of lead designer, alongside helping with development. You can check out my Figma wireframes, or take a look at the development preview site.",
+          ]}
+          stack={[
+            {
+              title: "Astro",
+              src: "simple-icons:astro",
+            },
+            {
+              title: "Tailwind",
+              src: "simple-icons:tailwindcss",
+            },
+          ]}
+          url="https://kqm-hsr.pages.dev/"
+          repo="https://github.com/KQM-git/hsr-site"
+          accent="#dd88ff"
+        />
+        <Featured
+          name="Sanity;Gone"
+          src="sg.png"
+          description={[
+            "Community resource for Arknights players, providing quick guides, reviews, and detailed information about the game.",
+            "I'm a developer with Sanity;Gone. We're a small team dedicated to providing quality resources for Arknights players. My primary role is to fix bugs and add minor features that fell through the cracks. I joined this project alongside my mentor, and it’s been a great learning experience for me.",
+            "Unfortunately, development has stalled due to major real-world issues impacting our team. However, we’re optimistic about continuing work in the future.",
+          ]}
+          stack={[
+            {
+              title: "Next.js",
+              src: "simple-icons:nextdotjs",
+            },
+            {
+              title: "Material UI",
+              src: "simple-icons:mui",
+            },
+            {
+              title: "Storybook",
+              src: "simple-icons:storybook",
+            },
+          ]}
+          url="https://sanitygone.help/"
+          repo="https://github.com/iansjk/sanity-gone"
+          accent="#49b3ff"
+        />
+      </ul>
+      <section>
+        <h2 class="subheader">...and some more fun stuff!</h2>
+        <ul class="flex flex-wrap">
+          <Project
+            name="Songb♪rd"
+            src="songbrd.svg"
+            description="Song Association game host seeded with the lyrics of songs in the user's Spotify playlist."
+            stack={[
+              {
+                title: "Next.js",
+                src: "simple-icons:nextdotjs",
+              },
+              {
+                title: "Firebase",
+                src: "simple-icons:firebase",
+              },
+            ]}
+            url="https://songbrd.app/"
+            repo="https://github.com/neeia/songbrd"
+            accent="#bb98e5"
+          />
+          <Project
+            name="Portfolio"
+            src="portfolio.svg"
+            description="Wow, how meta! This one makes companies want to hire me."
+            stack={[
+              {
+                title: "Astro",
+                src: "simple-icons:astro",
+              },
+              {
+                title: "TailwindCSS",
+                src: "simple-icons:tailwindcss",
+              },
+            ]}
+            url="/"
+            repo="https://github.com/neeia/portfolio"
+            accent="#88aaff"
+          />
+          <Project
+            name="Buckit"
+            src="buckit.svg"
+            description="Drag and Drop API study. Bucket list of things to do before I die."
+            stack={[
+              {
+                title: "Svelte",
+                src: "simple-icons:svelte",
+              },
+              {
+                title: "MongoDB",
+                src: "simple-icons:mongodb",
+              },
+            ]}
+            repo="https://github.com/neeia/buckit"
+            accent="palegreen"
+          />
+          <Project
+            name="Ranktify"
+            src="ranktify.svg"
+            description="Sorts a Spotify playlist using user decision in place of a comparison function."
+            stack={[
+              {
+                title: "React",
+                src: "simple-icons:react",
+              },
+              {
+                title: "TailwindCSS",
+                src: "simple-icons:tailwindcss",
+              },
+            ]}
+            repo="https://github.com/neeia/ranktify"
+            accent="#1ED760"
+          />
+        </ul>
+      </section>
+    </section>
+    <section id="skills" class="page-section">
+      <h2 class="section-header">Skills</h2>
+      <ul
+        class="flex flex-wrap items-start justify-center gap-x-8 gap-y-20 mt-16"
+      >
+        <li class="card">
+          <img
+            src="/img/icons/a11y.svg"
+            class="dark:invert"
+            width="150px"
+            height="150px"
+            alt=""
+          />
+          <h3>Accessibility Oriented</h3>
+          <div>
+            Making the internet more accessible is a win for everyone. I'm all
+            about accessibility and inclusivity. I'm familiar with WCAG
+            guidelines, and I'm constantly learning new a11y best practices.
+          </div>
+        </li>
+        <li class="card">
+          <img
+            src="/img/icons/a11y.svg"
+            class="dark:invert"
+            width="150px"
+            height="150px"
+            alt=""
+          />
+          <h3>I Do It All</h3>
+          <div>
+            The majority of my projects have been developed from start to finish
+            either solo or with limited external support. Due to this, I've
+            faced a variety of challenges across the development lifecycle.
+          </div>
+        </li>
+        <li class="card">
+          <img
+            class="dark:invert"
+            src="/img/icons/handshake.svg"
+            width="150px"
+            height="150px"
+            alt=""
+          />
+          <h3>Team Player</h3>
+          <div>
+            I'm outgoing, friendly, and love working with other people. I know
+            how to play my role, and my ideal environment is one where we can
+            bounce ideas off each other and improve as a collective.
+          </div>
+        </li>
+      </ul>
+      <h2 class="subheader">Looking for these?</h2>
+      <ul
+        class="flex flex-wrap gap-x-3 gap-y-5 mx-auto justify-center max-w-3xl"
+      >
+        {
+          [
+            { name: "logos:javascript", title: "JavaScript" },
+            { name: "logos:typescript-icon", title: "Typescript" },
+            { name: "logos:html-5", title: "HTML" },
+            { name: "logos:css-3", title: "CSS" },
+            { name: "logos:react", title: "React" },
+            { name: "teenyicons:nextjs-solid", title: "NextJS" },
+            { name: "logos:svelte-icon", title: "Svelte" },
+            { name: "vscode-icons:file-type-astro", title: "Astro" },
+            { name: "mdi:dot-net", title: ".NET" },
+            { name: "simple-icons:express", title: "Express.js" },
+            { name: "mdi:npm", title: "NPM" },
+            { name: "logos:yarn", title: "Yarn" },
+            { name: "logos:redux", title: "Redux" },
+            { name: "logos:figma", title: "Figma" },
+            { name: "logos:material-ui", title: "MUI" },
+            { name: "logos:tailwindcss-icon", title: "TailwindCSS" },
+            { name: "mdi:github", title: "GitHub" },
+            { name: "logos:strapi-icon", title: "Strapi" },
+            { name: "logos:storybook-icon", title: "Storybook" },
+          ].map((props) => (
+            <li>
+              <Icon
+                class="w-16 h-16 hover:scale-105 transition-transform"
+                {...props}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+    <section id="about" class="page-section">
+      <h2 class="section-header">About Me</h2>
+      <div class="p-arent sm:max-w-screen-sm mx-auto mt-8 text-justify">
+        <h3 class="text-lg font-semibold">Me</h3>
+        <p>
+          I'm a web developer from Southern California. I graduated from
+          Northeastern University with a Computer Science degree in 2021, and
+          I've been studying web development since then.
+        </p>
+        <p>
+          When I'm not working on my projects or studying, I like to listen to
+          music (Ado fans represent), read webtoons, and grind Duolingo.
+        </p>
+        <h3 class="text-lg font-semibold">How I got here</h3>
+        <p>
+          Entering the year 2021, I was lost. It was the height of the pandemic,
+          and I was soon to graduate with no clue as to what I wanted to do. It
+          was around this time that I was fortunate enough to meet my mentor,
+          Ian (<a
+            href="https://iam.kim/"
+            target="_blank"
+            rel="noopener"
+            class="underline decoration-dotted">link</a
+          >). With his help, I was able to kickstart my exploration of web
+          development with my first project, Krooster (more on that above). From
+          that point, I gradually learned more as I picked up or joined various
+          other projects.
+        </p>
+        <h3 class="text-lg font-semibold">Where I'm going</h3>
+        <p>
+          My current priority is to continue advancing my skills as I gain
+          experience working with a team. My ideal position is alongside a small
+          team of open-minded developers that I can learn from. If you're
+          interested, feel free to contact me below with any opportunities!
+        </p>
+      </div>
+    </section>
+    <section id="contact" class="page-section">
+      <h2 class="section-header mb-20">Contact Me</h2>
+      <div>
+        <form
+          class="max-w-xl mx-auto print:hidden"
+          action="https://formspree.io/f/mgebrzpd"
+          method="POST"
+        >
+          <label>
+            Name
+            <input name="name" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            Subject
+            <input name="subject" required /></label
+          >
+          <label>
+            Message
+            <Autosize name="message" />
+          </label>
+          <button
+            type="submit"
+            class="py-3 px-8 bg-main rounded-lg text-white font-medium hover:brightness-105"
+          >
+            Send
+          </button>
+          <span class="ml-4 opacity-80">All fields are required.</span>
+        </form>
 
+        <h3 class="subheader">You can also find me on:</h3>
+        <dl
+          class="grid grid-flow-col grid-rows-2 justify-items-center w-fit grid-cols-3 gap-x-8 mx-auto mb-80"
+        >
+          <dt>
+            <Icon class="w-16 h-16" name="mdi:github" title="GitHub" />
+          </dt>
+          <dd>
+            <a
+              href="https://github.com/neeia"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              neeia
+            </a>
+          </dd>
+          <dt>
+            <Icon
+              class="w-16 h-16"
+              name="ic:baseline-discord"
+              title="Discord"
+            />
+          </dt>
+          <dd>
+            <a
+              href="https://discord.com/channels/@me"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              neia
+            </a>
+          </dd>
+          <dt>
+            <Icon class="w-16 h-16" name="ic:baseline-reddit" title="Reddit" />
+          </dt>
+          <dd>
+            <a
+              href="https://www.reddit.com/user/neeia/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              neeia
+            </a>
+          </dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+</Layout>
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  img#profile {
+    border-radius: 50%;
+  }
+  html.dark img#profile {
+    box-shadow: inset 8em -4em rgb(254 243 199);
+  }
+
+  .p-arent > * + * {
+    margin-top: 0.5em;
+  }
+  .p-arent > h3 {
+    margin-top: 2em;
+  }
 </style>

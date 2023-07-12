@@ -1,0 +1,22 @@
+---
+export interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<textarea class="autosize resize-none w-full box-border" rows={2} name={name}></textarea>
+<script>
+  function fit(e: HTMLTextAreaElement) {
+    e.style.height = "";
+    e.style.height = `${e.scrollHeight + 4}px`;
+  }
+
+  const textEl = document.querySelectorAll(
+    "textarea.autosize"
+  ) as NodeListOf<HTMLTextAreaElement>;
+  textEl.forEach((e) => {
+    e.addEventListener("input", () => fit(e));
+  });
+</script>

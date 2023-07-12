@@ -1,0 +1,236 @@
+---
+import { Icon } from "astro-icon";
+const headers = ["Projects", "Skills", "About", "Contact"];
+---
+
+<header class="w-full fixed top-0 left-0 z-10">
+  <nav
+    aria-label="Main"
+    class="flex min-h-[52px] items-center bg-amber-50 dark:bg-slate-950 px-4 transition-colors print:hidden"
+  >
+    <a href="/#" class="flex items-center gap-2 z-30 mr-auto mb-0.5">
+      <img
+        id="nav-profile"
+        src="profile.svg"
+        height="36"
+        width="36"
+        alt="Home"
+        class="hide transition-all"
+      />
+    </a>
+    <button
+      id="button-toggle-nav"
+      class="md:hidden p-2 z-30 peer"
+      aria-controls="container-nav-links"
+      aria-expanded="false"
+    >
+      <svg width={32} height={32} viewBox="0 0 100 100">
+        <g
+          class="stroke-slate-950 dark:stroke-slate-50"
+          stroke-width="2"
+          fill="none"
+        >
+          <path
+            class="line line1"
+            d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"
+          >
+          </path>
+          <path class="line line2" d="M 20,50 H 80"></path>
+          <path
+            class="line line3"
+            d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"
+          >
+          </path>
+        </g>
+      </svg>
+    </button>
+    <div
+      id="container-nav-links"
+      class="peer-aria-collapsed:-translate-y-full min-h-screen right-0 left-0 top-0 px-12 pt-24 pb-16 bg-slate-100 dark:bg-slate-800 transition absolute overflow-hidden md:contents"
+    >
+      <ul
+        class="flex flex-col md:flex-row text-base gap-12 md:gap-8 justify-center items-center md:mr-4"
+      >
+        {
+          headers.map((h) => (
+            <li class="contents">
+              <a
+                href={`#${h.toLocaleLowerCase()}`}
+                class="underline decoration-transparent hover:decoration-current transition-color"
+              >
+                {h}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <button id="button-toggle-dark" aria-label="Toggle Dark Mode">
+            <Icon
+              class="p-2 w-8 h-8 dark:hidden"
+              name="entypo:light-up"
+              title="Enable Light Mode"
+            />
+            <Icon
+              class="p-2 w-8 h-8 hidden dark:block"
+              name="ic:outline-dark-mode"
+              title="Enable Dark Mode"
+            />
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<script>
+  // observer for home button
+  let observer;
+
+  let options = {
+    root: null,
+    rootMargin: "-48px 0px 0px 0px",
+    threshold: 0,
+  };
+
+  let mini = document.querySelector("#nav-profile");
+  let target = document.querySelector("#profile");
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        // img is on screen
+        mini?.classList.add("hide");
+      } else {
+        // img is offscreen
+        mini?.classList.remove("hide");
+      }
+    });
+  }, options);
+  if (target) observer.observe(target);
+</script>
+<script>
+  // control dark mode
+  const darkToggle = document.querySelector(
+    "#button-toggle-dark"
+  ) as HTMLButtonElement;
+  darkToggle.addEventListener("click", () => {
+    if (document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.remove("dark");
+      localStorage.theme = "light";
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.theme = "dark";
+    }
+  });
+</script>
+<script>
+  // control mobile menu state
+  const navMenuToggle = document.querySelector(
+    "#button-toggle-nav"
+  ) as HTMLButtonElement;
+  const navMenu = document.querySelector("#container-nav-links") as HTMLElement;
+  const body = document.querySelector("body") as HTMLElement;
+  const nonNav = document.querySelectorAll(
+    "main, footer"
+  ) as NodeListOf<HTMLElement>;
+
+  // note: navMenuToggle aria-expanded should be canon for whether the menu is open
+  // Prevent navbar and body from staying inert if resizing screen
+  function handleResize() {
+    const width =
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth;
+    if (width < 1024) {
+      // mobile - check if menu is open and assign inert accordingly
+      navMenuToggle.ariaExpanded ??= "false";
+      if (navMenuToggle.ariaExpanded === "false") {
+        navMenu.inert = true;
+        nonNav.forEach((el) => (el.inert = false));
+        body.style.overflowY = "";
+      } else if (navMenuToggle.ariaExpanded === "true") {
+        navMenu.inert = false;
+        nonNav.forEach((el) => (el.inert = true));
+        body.style.overflowY = "hidden";
+      }
+    } else {
+      // desktop - menu no longer expands, nothing should be inert
+      navMenuToggle.ariaExpanded = null;
+      navMenu.inert = false;
+      nonNav.forEach((el) => (el.inert = false));
+      body.style.overflowY = "";
+    }
+  }
+  handleResize();
+  window.addEventListener("resize", handleResize);
+
+  // Show / Hide the navigation menu on mobile
+  function toggleNavMenu() {
+    if (navMenuToggle.ariaExpanded === "true") {
+      navMenuToggle.ariaExpanded = "false";
+      navMenu.inert = true;
+      nonNav.forEach((el) => (el.inert = false));
+      body.style.overflowY = "";
+    } else {
+      navMenuToggle.ariaExpanded = "true";
+      navMenu.inert = false;
+      nonNav.forEach((el) => (el.inert = true));
+      body.style.overflowY = "hidden";
+    }
+  }
+  navMenuToggle?.addEventListener("click", toggleNavMenu);
+
+  // close nav menu when escape is pressed
+  function checkEscapeMenu(e: KeyboardEvent) {
+    if (e.key === "Escape" && navMenuToggle.ariaExpanded === "true") {
+      toggleNavMenu();
+      navMenuToggle.focus();
+    }
+  }
+
+  window.addEventListener("keydown", checkEscapeMenu);
+</script>
+
+<style>
+  li {
+    display: contents;
+  }
+
+  .hide {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .line {
+    transition: stroke-dasharray 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke-dashoffset 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* animated open/close icon, Credits Mikael Ainalem */
+  /* https://uxdesign.cc/the-menu-210bec7ad80c */
+  .line1 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+  }
+  .line2 {
+    stroke-dasharray: 60 60;
+    stroke-width: 6;
+  }
+  .line3 {
+    stroke-dasharray: 60 207;
+    stroke-width: 6;
+  }
+  button[aria-expanded="true"] .line1 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+  }
+  button[aria-expanded="true"] .line2 {
+    stroke-dasharray: 1 60;
+    stroke-dashoffset: -30;
+    stroke-width: 6;
+  }
+  button[aria-expanded="true"] .line3 {
+    stroke-dasharray: 90 207;
+    stroke-dashoffset: -134;
+    stroke-width: 6;
+  }
+</style>

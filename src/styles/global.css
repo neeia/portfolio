@@ -1,0 +1,45 @@
+/* Opinionated Global Styling
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  form label {
+    @apply block my-4;
+  }
+
+  form input,
+  form textarea {
+    @apply block mt-1 p-2 bg-[#fffcfa] dark:bg-slate-800 w-full rounded-[1px];
+  }
+}
+
+@layer components {
+  .page-section {
+    @apply min-h-screen pt-40 print:break-after-page;
+  }
+
+  .section-header {
+    @apply text-center text-4xl uppercase font-bold;
+  }
+
+  .subheader {
+    @apply text-center text-2xl font-bold mt-32 mb-8;
+  }
+
+  .subtitle {
+    @apply font-bold text-neutral-600 dark:text-neutral-400;
+  }
+
+  #skills .card {
+    @apply flex flex-col justify-center items-center rounded-lg max-w-sm text-justify gap-4;
+  }
+  #skills .card img {
+    @apply w-32 h-32;
+  }
+  #skills .card h3 {
+    @apply text-xl font-bold;
+  }
+}
