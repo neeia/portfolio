@@ -55,6 +55,7 @@ const headers = ["Projects", "Skills", "About", "Contact"];
           headers.map((h) => (
             <li class="contents">
               <a
+                id={`nav-header-${h}`}
                 href={`#${h.toLocaleLowerCase()}`}
                 class="underline decoration-transparent hover:decoration-current transition-color"
               >
@@ -91,8 +92,8 @@ const headers = ["Projects", "Skills", "About", "Contact"];
     threshold: 0,
   };
 
-  let mini = document.querySelector("#nav-profile");
-  let target = document.querySelector("#profile");
+  let mini = document.getElementById("nav-profile");
+  let target = document.getElementById("profile");
   observer = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (e.isIntersecting) {
@@ -123,10 +124,10 @@ const headers = ["Projects", "Skills", "About", "Contact"];
 </script>
 <script>
   // control mobile menu state
-  const navMenuToggle = document.querySelector(
-    "#button-toggle-nav"
+  const navMenuToggle = document.getElementById(
+    "button-toggle-nav"
   ) as HTMLButtonElement;
-  const navMenu = document.querySelector("#container-nav-links") as HTMLElement;
+  const navMenu = document.getElementById("container-nav-links") as HTMLElement;
   const body = document.querySelector("body") as HTMLElement;
   const nonNav = document.querySelectorAll(
     "main, footer"
@@ -187,6 +188,12 @@ const headers = ["Projects", "Skills", "About", "Contact"];
   }
 
   window.addEventListener("keydown", checkEscapeMenu);
+
+  const headers = ["Projects", "Skills", "About", "Contact"];
+  headers.forEach((h) => {
+    const el = document.getElementById(`nav-header-${h}`);
+    el?.addEventListener("click", toggleNavMenu);
+  });
 </script>
 
 <style>
