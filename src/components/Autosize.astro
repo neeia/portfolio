@@ -6,7 +6,7 @@ export interface Props {
 const { name } = Astro.props;
 ---
 
-<textarea class="autosize resize-none w-full box-border" rows={2} name={name}></textarea>
+<textarea required class="autosize resize-none w-full box-border" rows={2} name={name}></textarea>
 <script>
   function fit(e: HTMLTextAreaElement) {
     e.style.height = "";
