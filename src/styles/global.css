@@ -36,10 +36,41 @@
   #skills .card {
     @apply flex flex-col justify-center items-center rounded-lg max-w-sm text-justify gap-4;
   }
+
   #skills .card img {
     @apply w-32 h-32;
   }
+
   #skills .card h3 {
     @apply text-xl font-bold;
   }
+
+  #resume h2 {
+    @apply text-3xl text-blue-900 font-semibold mt-2;
+    font-variant: small-caps;
+  }
+
+  #resume h3 {
+    @apply text-lg font-semibold;
+  }
+
+  #resume li {
+    @apply list-disc list-outside ml-4;
+  }
+
+  #resume dd {
+    @apply mr-4 flex items-center;
+  }
+
+  #resume ul {
+    @apply flex flex-wrap items-center gap-1 leading-4;
+  }
+  ul.dot-list > li {
+    @apply contents;
+  }
+  ul.dot-list > li:not(:first-child)::before {
+    content: "•";
+    font-size: smaller;
+  }
+
 }
