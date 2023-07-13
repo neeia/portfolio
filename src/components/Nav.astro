@@ -64,6 +64,14 @@ const headers = ["Projects", "Skills", "About", "Contact"];
             </li>
           ))
         }
+            <li class="contents">
+              <a
+                href="/resume"
+                class="underline decoration-transparent hover:decoration-current transition-color"
+              >
+                Resume
+              </a>
+            </li>
         <li>
           <button id="button-toggle-dark" aria-label="Toggle Dark Mode">
             <Icon
@@ -140,7 +148,7 @@ const headers = ["Projects", "Skills", "About", "Contact"];
       window.innerWidth ||
       document.documentElement.clientWidth ||
       document.body.clientWidth;
-    if (width < 1024) {
+    if (width < 768) {
       // mobile - check if menu is open and assign inert accordingly
       navMenuToggle.ariaExpanded ??= "false";
       if (navMenuToggle.ariaExpanded === "false") {
