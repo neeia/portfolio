@@ -334,11 +334,11 @@ import Project from "../components/projects/Project.astro";
             id="contact-form-submit"
             type="submit"
             disabled
-            class="py-3 px-8 bg-main disabled:opacity-25 rounded-lg text-white font-medium hover:brightness-105 :disabled:hover:brightness-100"
+            class="py-3 px-8 bg-main disabled:opacity-25 rounded-lg text-white font-medium hover:brightness-105 disabled:hover:brightness-100 peer transition:opacity"
           >
             Send
           </button>
-          <span class="ml-4 opacity-80">All fields are required.</span>
+          <span class="ml-4 opacity-20 peer-disabled:opacity-80 transition-opacity">All fields are required.</span>
         </form>
 
         <h3 class="subheader">You can also find me on:</h3>
