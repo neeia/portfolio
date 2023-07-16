@@ -16,8 +16,8 @@ const { name, url, repo, date } = Astro.props;
 ---
 
 <li class="block m-0">
-  <div class="flex items-baseline gap-2">
-    <h3>{name}</h3>
+  <div class="flex items-baseline gap-x-2 flex-wrap mb-1">
+    <h3 class="leading-none">{name}</h3>
     {
       url && (
         <span>
@@ -49,18 +49,6 @@ const { name, url, repo, date } = Astro.props;
     content: "|";
     font-size: larger;
     margin-right: 4px;
-  }
-
-  h3 {
-    margin: 0;
-    font-size: 1.4em;
-  }
-
-  ul {
-    padding-left: 4ch;
-    line-height: 1.25;
-    margin-top: 0.75em;
-    margin-bottom: 0.75em;
   }
 
   svg {
