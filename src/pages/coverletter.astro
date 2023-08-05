@@ -1,0 +1,91 @@
+---
+import "../styles/reset.css";
+import "../styles/global.css";
+import PrintLayout from "../layouts/PrintLayout.astro";
+import Header from "../components/resume/Header.astro";
+import Autosize from "../components/Autosize.astro";
+
+//#region Date Math
+function appendNumberSuffix(n: string) {
+  switch (n) {
+    case "1":
+      return `${n}st`;
+    case "2":
+      return `${n}nd`;
+    case "3":
+      return `${n}rd`;
+    default:
+      return `${n}th`;
+  }
+}
+
+var months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+function toDateString(this: Date) {
+  const splitDate = this.toLocaleDateString().split("/");
+  return `${months[Number(splitDate[1]) - 1]} ${appendNumberSuffix(
+    splitDate[0]
+  )}, ${splitDate[2]}`;
+}
+//#endregion
+
+const inputClass =
+  "print:placeholder-shown:hidden p-1 print:p-0 -mx-1 print:m-0";
+---
+
+<PrintLayout
+  title="Cover Letter"
+  description="This is a generic cover letter template."
+  className="text-base"
+>
+  <Header className="mb-2 text-xs" />
+  {toDateString.apply(new Date())}
+  <input placeholder="Company Name..." class={inputClass} autofocus />
+  <p class="mt-2">Dear Hiring Manager,</p>
+  <Autosize
+    name="intro"
+    className={inputClass}
+    rows={1}
+    value="I'm a user-focused web developer, and I've been developing web applications for over two years for tens of thousands of users. I've worked both alone and in a team, giving me some amount of exposure to all parts of the development process, from design to development to deployment. I have a particular interest in accessibility best practices and can implement most common patterns from scratch. I'd love to learn more about [something about the company]."
+    placeholder="Introduce yourself, and keep it short."
+  />
+  <Autosize
+    name="body 1"
+    className={inputClass}
+    rows={1}
+    placeholder="Explain what makes you a good fit for the position."
+  />
+  <Autosize
+    name="body 2"
+    className={inputClass}
+    rows={1}
+    placeholder="Explain why you're interested in this specific company."
+  />
+  <Autosize
+    name="conclusion"
+    className={inputClass}
+    rows={1}
+    value="Thank you for considering me for this position. If you want to know more about me, check out my portfolio, and if you think we're a good match, I look forward to hearing from you!"
+    placeholder="Thank the hiring manager, and wrap it up."
+  />
+  <p class="mt-2">Sincerely,</p>
+  <p>Neia Hu</p>
+
+  <div class="print:hidden">
+    <h2 class="text-xl mt-8">Notes: <span class="text-sm text-gray-400 italic">(hidden when printing)</span></h2>
+    <Autosize className={inputClass} placeholder="Job summary #1" rows={1} />
+    <Autosize className={inputClass} placeholder="Job summary #2" rows={1} />
+  </div>
+</PrintLayout>

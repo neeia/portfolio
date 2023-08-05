@@ -1,0 +1,49 @@
+---
+import "../styles/reset.css";
+import "../styles/global.css";
+
+export interface Props {
+  title: string;
+  description: string;
+  className?: string;
+}
+
+const { title, description, className } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth relative">
+  <!--   /\_/\          -->
+  <!--  ( o.o )  chirp  -->
+  <!--   > ^ <          -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="h-full">
+    <style>
+      @page {
+        size: auto; /* auto is the initial value */
+        margin: 0mm; /* this affects the margin in the printer settings */
+      }
+    </style>
+    <div
+      class="print:contents flex justify-center p-2 h-max overflow-auto text-black text-xs"
+    >
+      <article
+        class:list={[
+          "flex flex-col w-[8.5in] bg-white",
+          "px-4 md:px-16 print:px-12 py-6 md:py-12 print:py-12 gap-1 h-max print:h-[11in]",
+          "shadow-lg box-border print:shadow-none",
+          className
+        ]}
+      >
+        <slot />
+      </article>
+    </div>
+  </body>
+</html>

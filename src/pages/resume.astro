@@ -1,333 +1,249 @@
 ---
-import { Icon } from "astro-icon";
-import Work from "../components/resume/Work.astro";
-import Project from "../components/resume/Project.astro";
 import "../styles/reset.css";
 import "../styles/global.css";
+import PrintLayout from "../layouts/PrintLayout.astro";
+import Header from "../components/resume/Header.astro";
+import Project from "../components/resume/Project.astro";
+import Work from "../components/resume/Work.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en" class="h-full scroll-smooth relative">
-  <!--   /\_/\          -->
-  <!--  ( o.o )  chirp  -->
-  <!--   > ^ <          -->
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Web Developer, permanent resident of the valley of despair"
-    />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Resume</title>
-    <script is:inline>
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    </script>
-  </head>
-  <body class="h-full">
-    <style>
-      @page {
-        size: auto; /* auto is the initial value */
-        margin: 0mm; /* this affects the margin in the printer settings */
-      }
-    </style>
-    <div
-      id="resume"
-      class="print:contents flex justify-center p-2 h-max overflow-auto"
-    >
-      <div
-        class="flex flex-col w-[8.5in] bg-white text-black text-xs px-4 md:px-16 print:px-12 py-6 md:py-12 print:py-12 shadow-lg box-border gap-1 h-max print:h-[11in] print:shadow-none"
+<PrintLayout title="Resume" description="This is Neia Hu's most current resume." className="resume">
+  <Header />
+  <section>
+    <h2>Experience</h2>
+    <ul>
+      <Work
+        company="Independent Contractor"
+        date="Dec 2022 - Present"
+        location="San Gabriel, CA"
       >
-        {/* Header */}
-        <section>
-          <h1 class="font-bold text-4xl mr-1">Neia Hu</h1>
-          <dl
-            class="grid grid-cols-[auto_1fr] sm:flex print:flex items-center gap-1 mt-2"
-          >
-            <dt>Portfolio:</dt>
-            <dd>
-              <a
-                href="https://neia.dev/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                neia.dev
-              </a>
-            </dd>
-            <dt>GitHub:</dt>
-            <dd>
-              <a
-                href="https://github.com/neeia"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                neeia
-              </a>
-            </dd>
-            <dt>LinkedIn:</dt>
-            <dd>
-              <a
-                href="https://www.linkedin.com/in/neeia/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                neeia
-              </a>
-            </dd>
-            <dt>Email:</dt>
-            <dd>
-              <a href="mailto:neiahu.dev@gmail.com">neiahu.dev@gmail.com</a>
-            </dd>
-            <dt>Phone:</dt>
-            <dd><a href="tel:+16262139966">(626) 213-9966</a></dd>
-          </dl>
-        </section>
-        <section>
-          <h2>Experience</h2>
-          <ul>
-            <Work
-              company="Independent Contractor"
-              date="Dec 2022 - Present"
-              location="San Gabriel, CA"
-            >
-              <li>
-                Developed clean, simple user interfaces based on rough outlines
-                to match user and client needs
-              </li>
-              <li>
-                Determined project scope to set deadlines while ensuring the
-                correct tools were used for the purpose
-              </li>
-              <li>
-                Maintained regular communication with clients to ensure
-                deadlines were met and visions were aligned
-              </li>
-            </Work>
-            <Work
-              company="TDK Headway Technologies"
-              title="Automation / Software Engineer"
-              date="Apr – Oct 2022"
-              location="Milpitas, CA"
-            >
-              <li>
-                Developed internal solutions regarding automation and collection
-                of data produced by product engineers
-              </li>
-              <li>
-                Used Microsoft .NET and SQL web tecnologies, with Visual Basic
-                to maintain legacy applications
-              </li>
-              <li>
-                Discussed project details, specifications, and timelines for
-                deliverables with internal clients
-              </li>
-            </Work>
-            <div class="contents print:hidden">
-              <Work
-                company="Coding Minds Academy"
-                title="Instructor"
-                date="Feb – Apr 2022"
-                location="Remote"
-              >
-                <li>
-                  Taught middle school students coding, breaking down advanced
-                  concepts like OOP into simple bits
-                </li>
-                <li>
-                  Delivered contextually written feedback to coworkers and
-                  parents after each session
-                </li>
-              </Work>
-              <Work date="Jun – Aug 2021" location="Arcadia & Irvine, CA">
-                <li>
-                  Taught groups of K-8 students block coding and developed new
-                  lesson plans for the short summer
-                </li>
-                <li>
-                  Resolved problems efficiently, minimizing disruption and
-                  improvizing content for fast learners
-                </li>
-              </Work>
-              <Work
-                company="Khoury College (NU)"
-                title="CS1800 Teaching Assistant"
-                date="Sep – Dec 2019"
-                location="Boston, MA"
-              >
-                <li>
-                  Taught discrete mathematics, logic, and proofs in regular
-                  office hours and recitation sessions
-                </li>
-                <li>
-                  Modelled problems in different ways to aid in student
-                  understanding of difficult mathematics
-                </li>
-              </Work>
-            </div>
-          </ul>
-        </section>
-        <section>
-          <h2>Projects</h2>
-          <ul>
-            <Project
-              name="Krooster"
-              url={{ name: "krooster.com", href: "https://www.krooster.com/" }}
-              repo={{
-                name: "ak-roster",
-                href: "https://github.com/neeia/ak-roster/",
-              }}
-              date="Jun 2021 – Present"
-            >
-              <li>
-                Built an open source web app using <b>TypeScript</b> with
-                <b>NextJS</b> for the game "Arknights", which allows users to record
-                and share in-game collections with other players and includes a number
-                of useful tools
-              </li>
-              <li>
-                Used <b>Supabase</b> hosted <b>PostgreSQL</b> and <b>Vercel</b> for
-                authentication, storage, hosting, and analytics
-              </li>
-              <li>
-                Actively serving over <b>10,000 registered users</b> internationally
-                with regular updates, issue tracking, and bug fixes
-              </li>
-            </Project>
-            <Project
-              name="KQM: Star Rail"
-              date="May 2023 – Present"
-              url={{
-                name: "PREVIEW: kqm-hsr.pages.dev",
-                href: "https://kqm-hsr.pages.dev/",
-              }}
-              repo={{
-                name: "KQM-git/hsr-site",
-                href: "https://github.com/KQM-git/hsr-site",
-              }}
-            >
-              <li>
-                Collaborating with a small team of three others to transition an
-                outdated codebase to Astro for the game "Honkai: Star Rail",
-                which hosts guides, data, and other written content
-              </li>
-              <li>
-                Prototyping an accessible, streamlined, modern new UI using
-                <b>Figma</b> alongside other contributors
-              </li>
-              <li>
-                Pivoting away from Wordpress CMS towards Markdown to enable our
-                content creation team to work rapidly
-              </li>
-            </Project>
-            <div class="contents print:hidden">
-              <Project
-                name="Songb♪rd"
-                url={{ name: "songbrd.app", href: "https://www.songbrd.app/" }}
-                repo={{
-                  name: "songbrd",
-                  href: "https://github.com/neeia/songbrd/",
-                }}
-                date="Nov 2022 – Present"
-              >
-                <li>
-                  Built an open source web app using <b>Typescript</b> and
-                  <b>NextJS</b> that produces random words from the lyrics of songs
-                  in a Spotify playlist using the Spotify and Genius APIs, based
-                  on the game Song Association
-                </li>
-                <li>
-                  Designed a fully responsive UI using <b>Vanilla Extract</b>,
-                  including an accessible autocomplete component
-                </li>
-              </Project>
-              <Project
-                name="Buckit"
-                url={{ name: "buckit.app", href: "https://www.buckit.app/" }}
-                repo={{
-                  name: "buckit",
-                  href: "https://github.com/neeia/buckit/",
-                }}
-                date="Dec 2022 – Present"
-              >
-                <li>
-                  Built a lifetime to-do list that divides tasks into buckets
-                  using <b>Svelte</b>, allowing users to split and sort goals
-                  between multiple categories
-                </li>
-                <li>
-                  Created a custom accessible drag and drop UI to move tasks and
-                  buckets
-                </li>
-                <li>
-                  Used <b>MongoDB Atlas</b> and <b>Vercel</b> for authentication,
-                  storage, and hosting
-                </li>
-              </Project>
-            </div>
-          </ul>
-        </section>
-        <section>
-          <h2>Education</h2>
-          <h3>Northeastern University</h3>
-          <div>
-            Computer Science, B.S.
-            <span class="italic"> | Graduated December 2021</span>
-          </div>
-        </section>
-        <section>
-          <h2>Skills</h2>
-          <h3>Languages and Frameworks</h3>
-          <ul class="dot-list">
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>React</li>
-            <li>NextJS</li>
-            <li>.NET</li>
-            <li>Express.js</li>
-            <li>Astro</li>
-            <li>Svelte</li>
-            <li>SQL</li>
-            <li>Java</li>
-            <li>Python</li>
-          </ul>
-          <h3 class="mt-1">Tools and Libraries</h3>
-          <ul class="dot-list">
-            <li>Node.js</li>
-            <li>Git</li>
-            <li>GitHub</li>
-            <li>Yarn</li>
-            <li>NPM</li>
-            <li>Redux</li>
-            <li>Firebase</li>
-            <li>Supabase</li>
-            <li>MongoDB</li>
-            <li>Strapi</li>
-            <li>Auth0</li>
-            <li>Vercel</li>
-            <li>Cloudflare Pages</li>
-          </ul>
-        </section>
-        <section>
-          <h2>Interests</h2>
-          <ul class="dot-list">
-            <li>A11y</li>
-            <li>Responsive Design</li>
-            <li>UI / UX Design</li>
-            <li>SEO</li>
-          </ul>
-        </section>
+        <li>
+          Developed clean, simple user interfaces based on rough outlines to
+          match user and client needs
+        </li>
+        <li>
+          Determined project scope to set deadlines while ensuring the correct
+          tools were used for the purpose
+        </li>
+        <li>
+          Maintained regular communication with clients to ensure deadlines were
+          met and visions were aligned
+        </li>
+      </Work>
+      <Work
+        company="TDK Headway Technologies"
+        title="Automation / Software Engineer"
+        date="Apr – Oct 2022"
+        location="Milpitas, CA"
+      >
+        <li>
+          Developed internal solutions regarding automation and collection of
+          data produced by product engineers
+        </li>
+        <li>
+          Used Microsoft .NET and SQL web tecnologies, with Visual Basic to
+          maintain legacy applications
+        </li>
+        <li>
+          Discussed project details, specifications, and timelines for
+          deliverables with internal clients
+        </li>
+      </Work>
+      <div class="contents print:hidden">
+        <Work
+          company="Coding Minds Academy"
+          title="Instructor"
+          date="Feb – Apr 2022"
+          location="Remote"
+        >
+          <li>
+            Taught middle school students coding, breaking down advanced
+            concepts like OOP into simple bits
+          </li>
+          <li>
+            Delivered contextually written feedback to coworkers and parents
+            after each session
+          </li>
+        </Work>
+        <Work date="Jun – Aug 2021" location="Arcadia & Irvine, CA">
+          <li>
+            Taught groups of K-8 students block coding and developed new lesson
+            plans for the short summer
+          </li>
+          <li>
+            Resolved problems efficiently, minimizing disruption and improvizing
+            content for fast learners
+          </li>
+        </Work>
+        <Work
+          company="Khoury College (NU)"
+          title="CS1800 Teaching Assistant"
+          date="Sep – Dec 2019"
+          location="Boston, MA"
+        >
+          <li>
+            Taught discrete mathematics, logic, and proofs in regular office
+            hours and recitation sessions
+          </li>
+          <li>
+            Modelled problems in different ways to aid in student understanding
+            of difficult mathematics
+          </li>
+        </Work>
       </div>
+    </ul>
+  </section>
+  <section>
+    <h2>Projects</h2>
+    <ul>
+      <Project
+        name="Krooster"
+        url={{ name: "krooster.com", href: "https://www.krooster.com/" }}
+        repo={{
+          name: "ak-roster",
+          href: "https://github.com/neeia/ak-roster/",
+        }}
+        date="Jun 2021 – Present"
+      >
+        <li>
+          Built an open source web app using <b>TypeScript</b> with
+          <b>NextJS</b> for the game "Arknights", which allows users to record and
+          share in-game collections with other players and includes a number of useful
+          tools
+        </li>
+        <li>
+          Used <b>Supabase</b> hosted <b>PostgreSQL</b> and <b>Vercel</b> for authentication,
+          storage, hosting, and analytics
+        </li>
+        <li>
+          Actively serving over <b>10,000 registered users</b> internationally with
+          regular updates, issue tracking, and bug fixes
+        </li>
+      </Project>
+      <Project
+        name="KQM: Star Rail"
+        date="May 2023 – Present"
+        url={{
+          name: "PREVIEW: kqm-hsr.pages.dev",
+          href: "https://kqm-hsr.pages.dev/",
+        }}
+        repo={{
+          name: "KQM-git/hsr-site",
+          href: "https://github.com/KQM-git/hsr-site",
+        }}
+      >
+        <li>
+          Collaborating with a small team of three others to transition an
+          outdated codebase to Astro for the game "Honkai: Star Rail", which
+          hosts guides, data, and other written content
+        </li>
+        <li>
+          Prototyping an accessible, streamlined, modern new UI using
+          <b>Figma</b> alongside other contributors
+        </li>
+        <li>
+          Pivoting away from Wordpress CMS towards Markdown to enable our
+          content creation team to work rapidly
+        </li>
+      </Project>
+      <div class="contents print:hidden">
+        <Project
+          name="Songb♪rd"
+          url={{ name: "songbrd.app", href: "https://www.songbrd.app/" }}
+          repo={{
+            name: "songbrd",
+            href: "https://github.com/neeia/songbrd/",
+          }}
+          date="Nov 2022 – Present"
+        >
+          <li>
+            Built an open source web app using <b>Typescript</b> and
+            <b>NextJS</b> that produces random words from the lyrics of songs in
+            a Spotify playlist using the Spotify and Genius APIs, based on the game
+            Song Association
+          </li>
+          <li>
+            Designed a fully responsive UI using <b>Vanilla Extract</b>,
+            including an accessible autocomplete component
+          </li>
+        </Project>
+        <Project
+          name="Buckit"
+          url={{ name: "buckit.app", href: "https://www.buckit.app/" }}
+          repo={{
+            name: "buckit",
+            href: "https://github.com/neeia/buckit/",
+          }}
+          date="Dec 2022 – Present"
+        >
+          <li>
+            Built a lifetime to-do list that divides tasks into buckets using <b
+              >Svelte</b
+            >, allowing users to split and sort goals between multiple
+            categories
+          </li>
+          <li>
+            Created a custom accessible drag and drop UI to move tasks and
+            buckets
+          </li>
+          <li>
+            Used <b>MongoDB Atlas</b> and <b>Vercel</b> for authentication, storage,
+            and hosting
+          </li>
+        </Project>
+      </div>
+    </ul>
+  </section>
+  <section>
+    <h2>Education</h2>
+    <h3>Northeastern University</h3>
+    <div>
+      Computer Science, B.S.
+      <span class="italic"> | Graduated December 2021</span>
     </div>
-  </body>
-</html>
+  </section>
+  <section>
+    <h2>Skills</h2>
+    <h3>Languages and Frameworks</h3>
+    <ul class="dot-list">
+      <li>JavaScript</li>
+      <li>TypeScript</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>React</li>
+      <li>NextJS</li>
+      <li>.NET</li>
+      <li>Express.js</li>
+      <li>Astro</li>
+      <li>Svelte</li>
+      <li>SQL</li>
+      <li>Java</li>
+      <li>Python</li>
+    </ul>
+    <h3 class="mt-1">Tools and Libraries</h3>
+    <ul class="dot-list">
+      <li>Node.js</li>
+      <li>Git</li>
+      <li>GitHub</li>
+      <li>Yarn</li>
+      <li>NPM</li>
+      <li>Redux</li>
+      <li>Firebase</li>
+      <li>Supabase</li>
+      <li>MongoDB</li>
+      <li>Strapi</li>
+      <li>Auth0</li>
+      <li>Vercel</li>
+      <li>Cloudflare Pages</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Interests</h2>
+    <ul class="dot-list">
+      <li>A11y</li>
+      <li>Responsive Design</li>
+      <li>UI / UX Design</li>
+      <li>SEO</li>
+    </ul>
+  </section>
+</PrintLayout>

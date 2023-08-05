@@ -1,0 +1,47 @@
+---
+export interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props;
+---
+
+<section class={className}>
+  <h1 class="font-bold text-4xl mr-1">Neia Hu</h1>
+  <dl
+    class="grid grid-cols-[auto_1fr] sm:flex print:flex items-center gap-1 mt-2"
+  >
+    <dt>Portfolio:</dt>
+    <dd>
+      <a href="https://neia.dev/" target="_blank" rel="noopener noreferrer">
+        neia.dev
+      </a>
+    </dd>
+    <dt>GitHub:</dt>
+    <dd>
+      <a
+        href="https://github.com/neeia"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        neeia
+      </a>
+    </dd>
+    <dt>LinkedIn:</dt>
+    <dd>
+      <a
+        href="https://www.linkedin.com/in/neeia/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        neeia
+      </a>
+    </dd>
+    <dt>Email:</dt>
+    <dd>
+      <a href="mailto:neiahu.dev@gmail.com">neiahu.dev@gmail.com</a>
+    </dd>
+    <dt>Phone:</dt>
+    <dd><a href="tel:+16262139966">(626) 213-9966</a></dd>
+  </dl>
+</section>
