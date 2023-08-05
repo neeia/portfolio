@@ -53,18 +53,19 @@ const inputClass =
   <Header className="mb-2 text-xs" />
   {toDateString.apply(new Date())}
   <input placeholder="Company Name..." class={inputClass} autofocus />
-  <p class="mt-2">Dear Hiring Manager,</p>
+  <p class="mt-4 mb-2">Dear Hiring Manager,</p>
   <Autosize
     name="intro"
     className={inputClass}
     rows={1}
-    value="I'm a user-focused web developer, and I've been developing web applications for over two years for tens of thousands of users. I've worked both alone and in a team, giving me some amount of exposure to all parts of the development process, from design to development to deployment. I have a particular interest in accessibility best practices and can implement most common patterns from scratch. I'd love to learn more about [something about the company]."
+    value="I'm a web developer, and I've been developing web applications for over two years for tens of thousands of users. I've worked both alone and in a team, giving me exposure to all parts of the development process, from design to development to deployment. I have a particular interest in accessibility best practices and can implement most common patterns from scratch. I'd love to learn more about [something about the company]."
     placeholder="Introduce yourself, and keep it short."
   />
   <Autosize
     name="body 1"
     className={inputClass}
     rows={1}
+    value="As someone who's developed and grown an open-sourced product up to 10,000 users, I can guarantee you that I'm a self-driven, user-motivated developer. I iterate and reiterate on a policy of constant improvement, making sure user needs are accounted for, always looking for new ways to improve the user experience."
     placeholder="Explain what makes you a good fit for the position."
   />
   <Autosize
