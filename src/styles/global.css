@@ -58,19 +58,21 @@
     @apply list-disc list-outside ml-4;
   }
 
- .resume dd {
-    @apply mr-4 flex items-center;
-  }
-
   .resume ul {
     @apply flex flex-wrap items-center gap-1 leading-4;
   }
+
   ul.dot-list > li {
     @apply contents;
   }
+
   ul.dot-list > li:not(:first-child)::before {
     content: "•";
     font-size: smaller;
+  }
+
+  #document-header dd {
+    @apply mr-4 flex items-center;
   }
 
 }
