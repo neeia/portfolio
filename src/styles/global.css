@@ -12,7 +12,7 @@
 
   form input,
   form textarea {
-    @apply block mt-1 p-2 bg-[#fffcfa] dark:bg-slate-800 w-full rounded-[1px];
+    @apply block mt-1 p-2 bg-[#fffcfa] dark:bg-slate-800 w-full rounded-[1px] transition-colors;
   }
 }
 
