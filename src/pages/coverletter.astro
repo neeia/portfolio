@@ -35,8 +35,8 @@ var months = [
 ];
 function toDateString(this: Date) {
   const splitDate = this.toLocaleDateString().split("/");
-  return `${months[Number(splitDate[1]) - 1]} ${appendNumberSuffix(
-    splitDate[0]
+  return `${months[Number(splitDate[0]) - 1]} ${appendNumberSuffix(
+    splitDate[1]
   )}, ${splitDate[2]}`;
 }
 //#endregion
