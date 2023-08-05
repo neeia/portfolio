@@ -1,6 +1,9 @@
 ---
 import { Icon } from "astro-icon";
 const headers = ["Projects", "Skills", "About", "Contact"];
+
+const navLinkClass =
+  "underline decoration-transparent hover:decoration-current";
 ---
 
 <header class="w-full fixed top-0 left-0 z-10">
@@ -57,21 +60,19 @@ const headers = ["Projects", "Skills", "About", "Contact"];
               <a
                 id={`nav-header-${h}`}
                 href={`#${h.toLocaleLowerCase()}`}
-                class="underline decoration-transparent hover:decoration-current"
+                class={navLinkClass}
               >
                 {h}
               </a>
             </li>
           ))
         }
-            <li class="contents">
-              <a
-                href="/resume"
-                class="underline decoration-transparent hover:decoration-current"
-              >
-                Resume
-              </a>
-            </li>
+        <li class="contents">
+          <a href="/resume" class={navLinkClass}>Resume</a>
+        </li>
+        <li class="contents">
+          <a href="/coverletter" class={navLinkClass}><abbr title="Cover Letter" class="no-underline">CL</abbr> Template</a>
+        </li>
         <li>
           <button id="button-toggle-dark" aria-label="Toggle Dark Mode">
             <Icon
