@@ -328,7 +328,7 @@ import Project from "../components/projects/Project.astro";
           </label>
           <label>
             Message
-            <Autosize name="message" />
+            <Autosize name="message" rows={2} />
           </label>
           <button
             id="contact-form-submit"
@@ -340,8 +340,9 @@ import Project from "../components/projects/Project.astro";
           </button>
           <span
             class="ml-4 opacity-20 peer-disabled:opacity-80 transition-opacity"
-            >All fields are required.</span
           >
+            All fields are required.
+          </span>
         </form>
 
         <h3 class="subheader">You can also find me on:</h3>
