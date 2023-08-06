@@ -9,24 +9,16 @@ export interface Props {
 const { company, title, date, location } = Astro.props;
 ---
 
-<li class={`m-0 w-full block${company ?  "" : " -mt-2"}`}>
+<li class={`m-0 w-full block${company ? "" : " -mt-2"}`}>
   <div class="flex items-baseline gap-1">
     {company && <h3>{company}</h3>}
-    {title && <span>{title}</span>}
+    <span class="ml-auto">{date}</span>
   </div>
   <div class="text-xs flex items-baseline gap-1">
-    <span>{date}</span>
-    <span>{location}</span>
+    {title && <span>{title}</span>}
+    <span class="ml-auto">{location}</span>
   </div>
   <ul class="mt-2 mb-3 pl-1 leading-4">
     <slot />
   </ul>
 </li>
-
-<style>
-  div > *:not(:first-child)::before {
-    content: "|";
-    font-size: larger;
-    margin-right: 0.5ch;
-  }
-</style>
