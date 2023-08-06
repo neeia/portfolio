@@ -7,7 +7,11 @@ import Project from "../components/resume/Project.astro";
 import Work from "../components/resume/Work.astro";
 ---
 
-<PrintLayout title="Resume" description="This is Neia Hu's most current resume." className="resume">
+<PrintLayout
+  title="Resume"
+  description="This is Neia Hu's most current resume."
+  className="resume"
+>
   <Header />
   <section>
     <h2>Experience</h2>
@@ -177,18 +181,13 @@ import Work from "../components/resume/Work.astro";
           date="Dec 2022 – Present"
         >
           <li>
-            Built a lifetime to-do list that divides tasks into buckets using <b
-              >Svelte</b
-            >, allowing users to split and sort goals between multiple
+            Built a bucket that literally puts tasks into buckets using
+            <b>Svelte</b>, allowing users to split goals between multiple
             categories
           </li>
           <li>
             Created a custom accessible drag and drop UI to move tasks and
-            buckets
-          </li>
-          <li>
-            Used <b>MongoDB Atlas</b> and <b>Vercel</b> for authentication, storage,
-            and hosting
+            buckets using the drag and drop API
           </li>
         </Project>
       </div>
@@ -217,8 +216,7 @@ import Work from "../components/resume/Work.astro";
       <li>Astro</li>
       <li>Svelte</li>
       <li>SQL</li>
-      <li>Java</li>
-      <li>Python</li>
+      <li>C#</li>
     </ul>
     <h3 class="mt-1">Tools and Libraries</h3>
     <ul class="dot-list">
@@ -233,8 +231,6 @@ import Work from "../components/resume/Work.astro";
       <li>MongoDB</li>
       <li>Strapi</li>
       <li>Auth0</li>
-      <li>Vercel</li>
-      <li>Cloudflare Pages</li>
     </ul>
   </section>
   <section>
