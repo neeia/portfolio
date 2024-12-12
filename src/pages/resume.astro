@@ -7,7 +7,7 @@ import Header from "../components/resume/Header.astro";
 import SectionBlock from "../components/resume/SectionBlock.astro";
 
 const skills = {
-  Languages: [
+  "Languages": [
     "JavaScript",
     "TypeScript",
     "HTML",
@@ -72,6 +72,21 @@ const skills = {
       <h2>Experience</h2>
       <ul>
         <SectionBlock
+          title="Substitute Teacher"
+          sub="Swing Education"
+          date="Aug 2024 - Present"
+          location="Los Angeles, CA"
+        >
+          <li>
+            Substituted at multiple schools teaching several subjects within the
+            greater Los Angeles area
+          </li>
+          <li>
+            Managed classroom behavior and maintained a safe and inclusive
+            learning environment
+          </li>
+        </SectionBlock>
+        <SectionBlock
           sub="Freelancer"
           title="Fullstack Developer"
           date="Dec 2022 - Present"
@@ -79,25 +94,16 @@ const skills = {
         >
           <li>
             Used <b>NextJS</b> alongside <b>Strapi</b> to develop a responsive web
-            application to allow users to create and compete in teams
+            application to allow users to compete in teams
           </li>
           <li>
             Designed and developed a RESTful API with <b>Express</b>,
-            <b>AWS S3</b>, and <b>Postgres</b>, managing authentication with <b
-              >Auth0</b
-            >
+            <b>AWS S3</b>, and <b>Postgres</b>, managing authentication with
+            <b>Auth0</b>
           </li>
           <li>
             Prototyped and developed clean, straightforward user interfaces to
             match user and client needs
-          </li>
-          <li>
-            Determined project scope to set deadlines while ensuring the correct
-            tools were used for the purpose
-          </li>
-          <li>
-            Maintained regular communication with clients to ensure deadlines
-            were met and visions were aligned
           </li>
         </SectionBlock>
         <SectionBlock
@@ -116,8 +122,8 @@ const skills = {
           </li>
         </SectionBlock>
         <SectionBlock
-          title="CS1800 Teaching Assistant"
-          sub="Khoury College, Northeastern University"
+          title="CS1800 Discrete Structures Teaching Assistant"
+          sub="Northeastern University"
           date="Sep – Dec 2019"
           location="Boston, MA"
         >
@@ -142,42 +148,21 @@ const skills = {
           date="Jun 2021 – Present"
         >
           <li>
-            Built an open source web app using <b>TypeScript</b> with
-            <b>NextJS</b> for the game "Arknights", which allows users to record
-            and share in-game collections with other players and includes a number
-            of useful tools
+            Built an open source fansite web app with <b>NextJS</b>, which
+            allows users to record and share collections with other users and
+            includes a number of useful tools
           </li>
           <li>
             Used <b>Supabase</b> hosted <b>PostgreSQL</b> and <b>Vercel</b> for authentication,
             storage, hosting, and analytics
           </li>
           <li>
-            Actively serving over <b>10,000 registered users</b> internationally
+            Actively serving over <b>20,000 registered users</b> internationally
             with regular updates, issue tracking, and bug fixes
           </li>
           <li>
             Collaborated with other developers to fully integrate multiple other
             web applications into Krooster
-          </li>
-        </SectionBlock>
-        <SectionBlock
-          title="KQM: Star Rail"
-          sub="Frontend Developer, UI / Accessibility"
-          location="TypeScript, Astro, Preact / React, TailwindCSS, Radix UI"
-          date="May 2023 – Present"
-        >
-          <li>
-            Collaborating with a small team of three others to transition an
-            outdated codebase to <b>Astro</b> for the game "Honkai: Star Rail", which
-            hosts guides, data, and other written content
-          </li>
-          <li>
-            Prototyping an accessible, streamlined, modern new UI using
-            <b>Figma</b> alongside other contributors
-          </li>
-          <li>
-            Developing custom Markdown template components to allow our content
-            creation team to work more efficiently
           </li>
         </SectionBlock>
       </ul>
