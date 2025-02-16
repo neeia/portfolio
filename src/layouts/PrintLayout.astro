@@ -32,12 +32,12 @@ const { title, description, className } = Astro.props;
       }
     </style>
     <div
-      class="print:contents flex justify-center p-2 h-max overflow-auto text-black text-xs"
+      class="print:contents flex justify-center p-2 overflow-auto text-black text-xs bg-gray-100 h-full"
     >
       <article
         class:list={[
           "flex flex-col w-[8.5in] bg-white",
-          "px-12 py-12 gap-1 h-max print:h-[11in]",
+          "my-auto p-8 sm:p-16 print:p-16 gap-1 h-max print:h-[11in]",
           "shadow-lg box-border print:shadow-none",
           className
         ]}

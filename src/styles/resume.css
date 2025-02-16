@@ -20,7 +20,7 @@
   }
 
   #resume section {
-    @apply my-4;
+    @apply my-6;
   }
 
   #resume section > ul {
