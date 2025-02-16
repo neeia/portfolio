@@ -56,58 +56,32 @@ import Project from "../components/projects/Project.astro";
           repo="https://github.com/neeia/ak-roster"
           accent="#ffd440"
         />
-        <Featured
-          name="KQM: Star Rail"
-          src="kqmhsr.png"
-          description={[
-            "Honkai: Star Rail community dedicated to providing in-depth game guides and information.",
-            "I'm working with a small team to redesign the KQM Honkai: Star Rail website. Our primary goals are to improve a11y, streamline work for our content team, and to reinforce our branding.",
-            "I'm currently filling the role of lead designer, alongside helping with development. You can check out my Figma wireframes, or take a look at the development preview site.",
-          ]}
-          stack={[
-            {
-              title: "Astro",
-              src: "simple-icons:astro",
-            },
-            {
-              title: "Tailwind",
-              src: "simple-icons:tailwindcss",
-            },
-          ]}
-          url="https://kqm-hsr.pages.dev/"
-          repo="https://github.com/KQM-git/hsr-site"
-          accent="#dd88ff"
-        />
-        <Featured
-          name="Sanity;Gone"
-          src="sg.png"
-          description={[
-            "Community resource for Arknights players, providing quick guides, reviews, and detailed information about the game.",
-            "I'm a developer with Sanity;Gone. We're a small team dedicated to providing quality resources for Arknights players. My primary role is to fix bugs and add minor features that fell through the cracks. I joined this project alongside my mentor, and it’s been a great learning experience for me.",
-            "Unfortunately, development has stalled due to major real-world issues impacting our team. However, we’re optimistic about continuing work in the future.",
-          ]}
-          stack={[
-            {
-              title: "Next.js",
-              src: "simple-icons:nextdotjs",
-            },
-            {
-              title: "Material UI",
-              src: "simple-icons:mui",
-            },
-            {
-              title: "Storybook",
-              src: "simple-icons:storybook",
-            },
-          ]}
-          url="https://sanitygone.help/"
-          repo="https://github.com/iansjk/sanity-gone"
-          accent="#49b3ff"
-        />
       </ul>
       <section>
         <h2 class="subheader">...and some more fun stuff!</h2>
         <ul class="flex flex-wrap">
+          <Project
+            name="Sanity;Gone"
+            src="sg.png"
+            description="[Contributor] Community resource for Arknights players, providing quick guides, reviews, and detailed information about the game."
+            stack={[
+              {
+                title: "Next.js",
+                src: "simple-icons:nextdotjs",
+              },
+              {
+                title: "Material UI",
+                src: "simple-icons:mui",
+              },
+              {
+                title: "Storybook",
+                src: "simple-icons:storybook",
+              },
+            ]}
+            url="https://sanitygone.help/"
+            repo="https://github.com/iansjk/sanity-gone"
+            accent="#49b3ff"
+          />
           <Project
             name="Songb♪rd"
             src="songbrd.svg"

@@ -7,7 +7,7 @@ import Header from "../components/resume/Header.astro";
 import SectionBlock from "../components/resume/SectionBlock.astro";
 
 const skills = {
-  "Languages": [
+  Languages: [
     "JavaScript",
     "TypeScript",
     "HTML",
@@ -17,14 +17,7 @@ const skills = {
     "C#",
     "Java",
   ],
-  "Web Frameworks": [
-    "React",
-    "NextJS",
-    "ASP.NET",
-    "Express.js",
-    "Astro",
-    "Svelte",
-  ],
+  Frameworks: ["React", "NextJS", "ASP.NET", "Express.js", "Astro", "Svelte"],
   "Tools and Libraries": [
     "Node.js",
     "Git",
@@ -32,6 +25,7 @@ const skills = {
     "Yarn",
     "NPM",
     "Redux",
+    "Figma",
     "Firebase",
     "Supabase",
     "MongoDB",
@@ -40,12 +34,13 @@ const skills = {
   ],
   "Development Skills": [
     "Accessibility",
-    "Agile / Scrum",
     "Responsive Design",
     "REST APIs",
     "SEO",
   ],
 };
+
+const hobbies = ["Baking", "Digital Art", "Hobby Development"];
 ---
 
 <PrintLayout
@@ -54,9 +49,6 @@ const skills = {
 >
   <article id="resume">
     <Header />
-    <p>
-      Authorized to work for any US employer. &nbsp; &nbsp;Open to relocation.
-    </p>
     <section>
       <h2>Education</h2>
       <ul>
@@ -72,41 +64,6 @@ const skills = {
       <h2>Experience</h2>
       <ul>
         <SectionBlock
-          title="Substitute Teacher"
-          sub="Swing Education"
-          date="Aug 2024 - Present"
-          location="Los Angeles, CA"
-        >
-          <li>
-            Substituted at multiple schools teaching several subjects within the
-            greater Los Angeles area
-          </li>
-          <li>
-            Managed classroom behavior and maintained a safe and inclusive
-            learning environment
-          </li>
-        </SectionBlock>
-        <SectionBlock
-          sub="Freelancer"
-          title="Fullstack Developer"
-          date="Dec 2022 - Present"
-          location="Remote"
-        >
-          <li>
-            Used <b>NextJS</b> alongside <b>Strapi</b> to develop a responsive web
-            application to allow users to compete in teams
-          </li>
-          <li>
-            Designed and developed a RESTful API with <b>Express</b>,
-            <b>AWS S3</b>, and <b>Postgres</b>, managing authentication with
-            <b>Auth0</b>
-          </li>
-          <li>
-            Prototyped and developed clean, straightforward user interfaces to
-            match user and client needs
-          </li>
-        </SectionBlock>
-        <SectionBlock
           title="Automation / Software Engineer"
           sub="TDK Headway Technologies"
           date="Apr – Oct 2022"
@@ -117,8 +74,12 @@ const skills = {
             data produced by product engineers
           </li>
           <li>
-            Used <b>ASP.NET</b> and <b>MS SQL server</b>, with Visual Basic to
-            maintain legacy applications
+            Interfaced with internal clients to determine needs and
+            requirements, then implemented solutions per their specifications
+          </li>
+          <li>
+            Maintained legacy applications using <b>ASP.NET</b>,
+            <b>Visual Basic</b> and <b>MS SQL server</b>
           </li>
         </SectionBlock>
         <SectionBlock
@@ -144,7 +105,8 @@ const skills = {
         <SectionBlock
           title="Krooster"
           sub="Lead Developer"
-          location="TypeScript, NextJS, Redux, MUI, Postgres, Sentry"
+          location="krooster.com"
+          href="https://krooster.com/"
           date="Jun 2021 – Present"
         >
           <li>
@@ -153,12 +115,16 @@ const skills = {
             includes a number of useful tools
           </li>
           <li>
-            Used <b>Supabase</b> hosted <b>PostgreSQL</b> and <b>Vercel</b> for authentication,
-            storage, hosting, and analytics
+            Used <b>PostgreSQL</b> hosted by <b>Supabase</b> and deployed on
+            <b>Vercel</b> for authentication, storage, hosting, and analytics
           </li>
           <li>
-            Actively serving over <b>20,000 registered users</b> internationally
-            with regular updates, issue tracking, and bug fixes
+            Prototyped and redesigned a new UI with <b>Figma</b> to improve user
+            experience and increase engagement
+          </li>
+          <li>
+            Actively serving <b>10,000 users</b> internationally with regular updates,
+            issue tracking, and bug fixes
           </li>
           <li>
             Collaborated with other developers to fully integrate multiple other
@@ -183,6 +149,18 @@ const skills = {
           </div>
         ))
       }
+    </section>
+    <section id="interests">
+      <h2>Interests</h2>
+      <ul class="flex">
+        {
+          hobbies.map((h, i) => (
+            <li class="contents">
+              {`${h}${i < hobbies.length - 1 ? ", " : ""}`}
+            </li>
+          ))
+        }
+      </ul>
     </section>
   </article>
 </PrintLayout>

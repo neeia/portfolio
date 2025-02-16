@@ -8,40 +8,47 @@ const { className } = Astro.props;
 
 <div class={className} id="document-header">
   <h1 class="font-bold text-4xl mr-1 font-serif">Neia Hu</h1>
-  <dl
-    class="grid grid-cols-[auto_1fr] sm:flex print:flex items-center gap-1 mt-2 [&>dt]:font-bold"
-  >
-    <dt>Portfolio:</dt>
-    <dd>
-      <a href="https://neia.dev/" target="_blank" rel="noopener noreferrer">
-        neia.dev
-      </a>
-    </dd>
-    <dt>GitHub:</dt>
-    <dd>
-      <a
-        href="https://github.com/neeia"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        neeia
-      </a>
-    </dd>
-    <dt>LinkedIn:</dt>
-    <dd>
-      <a
-        href="https://www.linkedin.com/in/neeia/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        neeia
-      </a>
-    </dd>
-    <dt>Email:</dt>
-    <dd>
-      <a href="mailto:neiahu.dev@gmail.com">neiahu.dev@gmail.com</a>
-    </dd>
-    <dt>Phone:</dt>
-    <dd><a href="tel:+16262139966">(626) 213-9966</a></dd>
-  </dl>
+  <div class="flex justify-between">
+    <div>
+      <dl>
+        <dt class="inline">Email:</dt>
+        <dd class="contents">
+          <a href="mailto:neiahu.dev@gmail.com">neiahu.dev@gmail.com</a>
+        </dd>
+        <div class="h-0"></div>
+        <dt class="inline">Phone:</dt>
+        <dd class="contents">
+          <a href="tel:+16262139966">+1 (626) 213-9966</a>
+        </dd>
+      </dl>
+      <p>
+        Authorized to work for any US employer. &nbsp; &nbsp;Open to relocation.
+      </p>
+    </div>
+    <ul class="flex flex-col text-right">
+      <li>
+        <a
+          href="https://github.com/neeia"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          github.com/neeia
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://www.linkedin.com/in/neeia/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          linkedin.com/in/neeia
+        </a>
+      </li>
+      <li>
+        <a href="https://neia.dev/" target="_blank" rel="noopener noreferrer">
+          neia.dev
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>

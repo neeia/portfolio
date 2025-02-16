@@ -4,9 +4,10 @@ export interface Props {
   sub: string;
   date: string;
   location?: string;
+  href?: string;
 }
 
-const { title, sub, date, location } = Astro.props;
+const { title, sub, date, location, href } = Astro.props;
 ---
 
 <li class="mx-0 w-full block">
@@ -16,7 +17,13 @@ const { title, sub, date, location } = Astro.props;
   </div>
   <div class="flex justify-between text-xs italic">
     <span>{sub}</span>
-    {location && <span>{location}</span>}
+    {
+      href ? (
+        <a href={href}>{location}</a>
+      ) : location ? (
+        <span>{location}</span>
+      ) : null
+    }
   </div>
   <ul class="ml-6 mt-1 list-disc list-outside">
     <slot />

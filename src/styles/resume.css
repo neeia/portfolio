@@ -26,4 +26,8 @@
   #resume section > ul {
     @apply flex flex-col gap-4;
   }
+
+  #resume a {
+    @apply text-blue-500;
+  }
 }
